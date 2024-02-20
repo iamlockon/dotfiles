@@ -1,4 +1,6 @@
 -- always set leader first!
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
@@ -470,6 +472,8 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip"
 		},
 		config = function()
 			local cmp = require'cmp'
@@ -491,6 +495,7 @@ require("lazy").setup({
 				}),
 				sources = cmp.config.sources({
 					{ name = 'nvim_lsp' },
+					{ name = 'vsnip' },
 				}, {
 					{ name = 'path' },
 				}),
@@ -597,7 +602,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "rust" },
+				ensure_installed = { "rust" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -609,6 +614,13 @@ require("lazy").setup({
 	        'mrcjkb/rustaceanvim',
                 version = '^4', -- Recommended
 	        ft = { 'rust' },
+	},
+	{
+		'numToStr/Comment.nvim',
+		opts = {
+			
+		},
+		lazy = false,
 	}
 })
 
